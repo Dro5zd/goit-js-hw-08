@@ -1,8 +1,8 @@
 import _ from 'lodash';
 
 const form = document.querySelector('form');
-const emailInput = document.querySelector('input[name = email]');
-const messageInput = document.querySelector('textarea[name = message]');
+const emailInput = document.querySelector('input');
+const messageInput = document.querySelector('textarea');
 const submitBtn = document.querySelector('button[type = submit]');
 
 const savedSettings = localStorage.getItem('feedback-form-state');
