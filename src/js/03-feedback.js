@@ -5,27 +5,15 @@ const emailInput = document.querySelector('input');
 const messageInput = document.querySelector('textarea');
 const submitBtn = document.querySelector('button[type = submit]');
 
-const savedSettings = localStorage.getItem('feedback-form-state');
-
-// try {
-//   const parsedSettings = JSON.parse(savedSettings);
-//   emailInput.value = parsedSettings.email;
-//   messageInput.value = parsedSettings.message;
-// } catch (error){
-//   console.log(error.email);
-//   console.log(error.message);
-// }
-
-if (savedSettings !== null && savedSettings !== '') {
-  const parsedSettings = JSON.parse(savedSettings);
-  emailInput.value = parsedSettings.email;
-  messageInput.value = parsedSettings.message;
-}
-
 let obj = {
-  email: '' || emailInput.value,
-  message: '' || messageInput.value,
+  email: '',
+  message: '',
 };
+
+const savedSettings = localStorage.getItem('feedback-form-state');
+const parsedSettings = JSON.parse(savedSettings) || obj;
+emailInput.value = parsedSettings.email;
+messageInput.value = parsedSettings.message;
 
 if (emailInput.value === '' || messageInput.value === '') {
   submitBtn.setAttribute('disabled', 'disabled');
@@ -39,7 +27,6 @@ function onChangeHandler(event) {
   } else {
     submitBtn.setAttribute('disabled', 'disabled');
   }
-
   localStorage.setItem('feedback-form-state', JSON.stringify(obj));
 }
 
