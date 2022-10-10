@@ -7,19 +7,20 @@ const submitBtn = document.querySelector('button[type = submit]');
 
 const savedSettings = localStorage.getItem('feedback-form-state');
 
-try {
-  const parsedSettings = JSON.parse(savedSettings);
-  emailInput.value = parsedSettings.email;
-  messageInput.value = parsedSettings.message;
-} catch (error){
-  console.log(error.email);
-  console.log(error.message);
-}
-// if (savedSettings !== null && savedSettings !== '') {
+// try {
 //   const parsedSettings = JSON.parse(savedSettings);
 //   emailInput.value = parsedSettings.email;
 //   messageInput.value = parsedSettings.message;
+// } catch (error){
+//   console.log(error.email);
+//   console.log(error.message);
 // }
+
+if (savedSettings !== null && savedSettings !== '') {
+  const parsedSettings = JSON.parse(savedSettings);
+  emailInput.value = parsedSettings.email;
+  messageInput.value = parsedSettings.message;
+}
 
 let obj = {
   email: '' || emailInput.value,
