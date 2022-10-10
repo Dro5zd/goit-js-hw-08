@@ -5,6 +5,15 @@ const emailInput = document.querySelector('input');
 const messageInput = document.querySelector('textarea');
 const submitBtn = document.querySelector('button[type = submit]');
 
+
+const savedSettings = localStorage.getItem('feedback-form-state');
+
+if (savedSettings !== null && savedSettings !== '') {
+  const parsedSettings = JSON.parse(savedSettings);
+  emailInput.value = parsedSettings.email;
+  messageInput.value = parsedSettings.message;
+}
+
 let obj = {
   email: '' || emailInput.value,
   message: '' || messageInput.value,
@@ -31,14 +40,6 @@ function onSubmitHandler(event) {
   console.log(obj);
   localStorage.setItem('feedback-form-state', '');
   event.currentTarget.reset();
-}
-
-const savedSettings = localStorage.getItem('feedback-form-state');
-
-if (savedSettings !== '') {
-  const parsedSettings = JSON.parse(savedSettings);
-  emailInput.value = parsedSettings.email;
-  messageInput.value = parsedSettings.message;
 }
 
 form.addEventListener('input', _.throttle(onChangeHandler, 500));
