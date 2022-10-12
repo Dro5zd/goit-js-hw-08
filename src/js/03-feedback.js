@@ -14,8 +14,8 @@ if (savedSettings !== null && savedSettings !== '') {
 }
 
 let obj = {
-  email: '' || emailInput.value,
-  message: '' || messageInput.value,
+  email: emailInput.value,
+  message: messageInput.value,
 };
 
 if (emailInput.value === '' || messageInput.value === '') {
